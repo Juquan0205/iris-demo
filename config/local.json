@@ -1,0 +1,117 @@
+{
+  "name": "iris-demo",
+  "version": "0.1",
+  "isDevelopment": true,
+  "buildDir": "./build/",
+  "k8sDir": "./k8s/",
+  "image": {
+    "domain": "iris-demo",
+    "port": "80",
+    "cpuLimit": "1000m",
+    "memoryLimit": "1024Mi",
+    "cpuRequest": "500m",
+    "memoryRequest": "512Mi",
+    "name": "iris-demo",
+    "author": "aura",
+    "url": "reg.miz.so",
+    "log": {
+      "path": "/data/logs/maizuo.log"
+    }
+  },
+  "server": {
+    "order": {
+      "port": ":30011",
+      "host": "192.168.1.211"
+    },
+    "product": {
+      "port": ":30010",
+      "host": "192.168.1.211"
+    },
+    "port": "8080",
+    "host": "0.0.0.0",
+    "zipkinHTTPEndpoint": "http://zipkin.zipkin.svc:9411/api/v1/spans"
+  },
+  "redis": {
+    "addr": "192.168.1.204:6379",
+    "password": "123456",
+    "database": 2,
+    "maxActive": 50,
+    "idleTimeout": 60
+  },
+  "rateLimit": {
+    "key":"aura_rate",
+    "order": {
+      "second":60,
+      "times":5
+    },
+    "queryCardErr": {
+      "second":86400,
+      "times":10
+    }
+  },
+  "domain": {
+    "cardcenter": "http://cardcenter.maizuo.com",
+    "coupon": "http://coupon.maizuo.com",
+    "pay": "http://pay.maizuo.com",
+    "mobileif": "http://mobileif.maizuo.com",
+    "score": "http://score.maizuo.com",
+    "balance": "http://inif.maizuo.com",
+    "sms": "http://sms.maizuo.com"
+  },
+  "key": {
+    "score": "!@#$scoreKey321",
+    "cardcenter": "!@#$qwe15>^7",
+    "pay": "!@#$PaySignKey>^3",
+    "mobileif": "$MZ$(&)mobileif",
+    "balance": "!@#$maizuodb123",
+    "coupon": "WE3%%^$@3r4FDER$"
+  },
+  "card-business":{
+    "key": "!@#$qwe15>^7",
+    "goodsId":"1907",
+    "cinemaId":"9999",
+    "channelId":"72",
+    "goodsType":"1",
+    "goodsPrice":1,
+    "consumeType":"5"
+  },
+  "pay":{
+    "channel":"72",
+    "interface": {
+      "confirmPayResult" : "/isPay4mall.htm",
+      "pay": "/mallPay.htm"
+    }
+
+  },
+  "mobileif":{
+    "interface": {
+      "checkPassword": "/ver4/mall/checkPw"
+    }
+  },
+  "order":{
+    "payTimeMinute": 30
+  },
+  "score": {
+    "ruldId" :"304",
+    "systemId" :"11",
+    "actionId": "101"
+  },
+  "balance": {
+    "interface": {
+      "balancePay": "/useStamp4mall.htm",
+      "balanceQuery": "/sumStamp4mall.htm",
+      "balanceRollback": "/rollbackStamp4mall.htm"
+    },
+    "balanceType" : "3"
+  },
+  "coupon": {
+    "interface": {
+      "couponPay": "/coupon/consumerCoupon",
+      "couponQuery": "/coupon/queryMallCoupon",
+      "couponRollback": "/coupon/rollBackConsumer"
+    },
+    "couponChannel": "72",
+    "couponBusinessId": "2006010215"
+
+  }
+}
